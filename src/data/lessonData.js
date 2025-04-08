@@ -28,11 +28,11 @@ const languageInfo = {
 };
 
 // Import lesson data for each language
-import pythonLessons from './lessons/python';
-import htmlLessons from './lessons/html';
-import cssLessons from './lessons/css';
-import javascriptLessons from './lessons/javascript';
-import javaLessons from './lessons/java';
+import pythonLessons from './lessons/python.jsx';
+import htmlLessons from './lessons/html.jsx';
+import cssLessons from './lessons/css.jsx';
+import javascriptLessons from './lessons/javascript.jsx';
+import javaLessons from './lessons/java.jsx';
 
 // Combine all lessons
 const allLessons = {
@@ -54,21 +54,21 @@ export const getLessonData = (language, lessonId) => {
   if (lessonId < 1 || lessonId > 73) {
     throw new Error('Invalid lesson ID. Must be between 1 and 73.');
   }
-  
+
   // Get language-specific lessons
   const lessons = allLessons[language];
-  
+
   if (!lessons) {
     throw new Error(`Invalid language: ${language}`);
   }
-  
+
   // Get specific lesson
   const lesson = lessons.find(l => l.id === lessonId);
-  
+
   if (!lesson) {
     throw new Error(`Lesson ${lessonId} not found for ${language}`);
   }
-  
+
   // Add language metadata to lesson
   return {
     ...lesson,
@@ -85,11 +85,11 @@ export const getLessonData = (language, lessonId) => {
  */
 export const getAllLessonsForLanguage = (language) => {
   const lessons = allLessons[language];
-  
+
   if (!lessons) {
     throw new Error(`Invalid language: ${language}`);
   }
-  
+
   return lessons.map(lesson => ({
     ...lesson,
     languageName: languageInfo[language].name,

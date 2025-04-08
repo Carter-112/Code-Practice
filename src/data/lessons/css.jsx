@@ -23,7 +23,7 @@ const cssLessons = lessonTopics.map(topic => {
       lesson.explanation = `
         <h2>Welcome to CSS!</h2>
         <p>CSS (Cascading Style Sheets) is a style sheet language used for describing the presentation of a document written in HTML. CSS describes how elements should be rendered on screen, on paper, in speech, or on other media.</p>
-        
+
         <h3>What is CSS?</h3>
         <ul>
           <li><strong>Style Sheet Language:</strong> CSS is used to style HTML elements.</li>
@@ -31,10 +31,10 @@ const cssLessons = lessonTopics.map(topic => {
           <li><strong>Separation of Concerns:</strong> CSS separates content (HTML) from presentation.</li>
           <li><strong>Responsive Design:</strong> CSS enables responsive web design for different screen sizes.</li>
         </ul>
-        
+
         <h3>CSS Versions</h3>
         <p>CSS has evolved through several versions. The current standard is CSS3, which is modular and divided into several separate specifications.</p>
-        
+
         <h3>How to Add CSS to HTML</h3>
         <p>There are three ways to add CSS to an HTML document:</p>
         <ol>
@@ -119,12 +119,12 @@ p {
         </ul>
       `;
       break;
-    
+
     case 2: // CSS Selectors
       lesson.explanation = `
         <h2>CSS Selectors</h2>
         <p>CSS selectors are patterns used to select and style HTML elements. They are the bridge between your HTML document and your styles.</p>
-        
+
         <h3>Types of CSS Selectors</h3>
         <ul>
           <li><strong>Element Selector:</strong> Selects elements based on their tag name (e.g., <code>p</code>, <code>h1</code>)</li>
@@ -134,7 +134,7 @@ p {
           <li><strong>Pseudo-class Selector:</strong> Selects elements in a specific state (e.g., <code>:hover</code>, <code>:focus</code>)</li>
           <li><strong>Pseudo-element Selector:</strong> Selects a part of an element (e.g., <code>::first-line</code>, <code>::before</code>)</li>
         </ul>
-        
+
         <h3>Combinators</h3>
         <ul>
           <li><strong>Descendant Selector:</strong> Selects all descendants (e.g., <code>div p</code>)</li>
@@ -142,7 +142,7 @@ p {
           <li><strong>Adjacent Sibling Selector:</strong> Selects the adjacent sibling (e.g., <code>h1 + p</code>)</li>
           <li><strong>General Sibling Selector:</strong> Selects all siblings (e.g., <code>h1 ~ p</code>)</li>
         </ul>
-        
+
         <h3>Specificity</h3>
         <p>When multiple selectors target the same element, the browser uses specificity to determine which styles to apply. The more specific selector wins.</p>
       `;
@@ -271,29 +271,262 @@ p::first-letter {
         <p>These selectors demonstrate different ways to target HTML elements for styling.</p>
       `;
       break;
-      
+
+    case 3: // Basic Operators
+      lesson.explanation = `
+        <h2>CSS Selectors and Combinators</h2>
+        <p>CSS selectors are patterns used to select and style HTML elements. Combinators allow you to target elements based on their relationship to other elements.</p>
+
+        <h3>Advanced CSS Selectors</h3>
+        <ul>
+          <li><strong>Attribute Selectors:</strong> Select elements based on their attributes</li>
+          <li><strong>Pseudo-classes:</strong> Select elements based on a specific state</li>
+          <li><strong>Pseudo-elements:</strong> Style specific parts of an element</li>
+        </ul>
+
+        <h3>CSS Combinators</h3>
+        <p>Combinators explain the relationship between selectors:</p>
+        <ul>
+          <li><strong>Descendant Selector (space):</strong> Selects all elements that are descendants of a specified element</li>
+          <li><strong>Child Selector (>):</strong> Selects all elements that are direct children of a specified element</li>
+          <li><strong>Adjacent Sibling Selector (+):</strong> Selects an element that is directly after another specific element</li>
+          <li><strong>General Sibling Selector (~):</strong> Selects all elements that are siblings of a specified element</li>
+        </ul>
+
+        <h3>Attribute Selectors</h3>
+        <p>Attribute selectors allow you to select elements based on their attributes:</p>
+        <ul>
+          <li><strong>[attribute]:</strong> Selects elements with a specific attribute</li>
+          <li><strong>[attribute=value]:</strong> Selects elements with a specific attribute and value</li>
+          <li><strong>[attribute^=value]:</strong> Selects elements whose attribute value begins with a specified value</li>
+          <li><strong>[attribute$=value]:</strong> Selects elements whose attribute value ends with a specified value</li>
+          <li><strong>[attribute*=value]:</strong> Selects elements whose attribute value contains a specified value</li>
+        </ul>
+      `;
+      lesson.example = `/* Descendant Selector */
+nav a {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Child Selector */
+ul > li {
+  list-style-type: square;
+}
+
+/* Adjacent Sibling Selector */
+h2 + p {
+  font-weight: bold;
+}
+
+/* General Sibling Selector */
+h2 ~ p {
+  color: #666;
+}
+
+/* Attribute Selectors */
+[type] {
+  border: 1px solid #ccc;
+}
+
+[type="text"] {
+  padding: 5px;
+}
+
+[href^="https"] {
+  color: green;
+}
+
+[href$=".pdf"] {
+  color: red;
+}
+
+[title*="example"] {
+  font-style: italic;
+}
+
+/* Pseudo-classes */
+a:hover {
+  text-decoration: underline;
+}
+
+li:first-child {
+  font-weight: bold;
+}
+
+li:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Pseudo-elements */
+p::first-letter {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+p::before {
+  content: "➤ ";
+}`;
+      lesson.exampleExplanation = `
+        <p>This example demonstrates various CSS selectors and combinators:</p>
+        <ul>
+          <li><strong>Descendant Selector (nav a):</strong> Selects all links inside a nav element</li>
+          <li><strong>Child Selector (ul > li):</strong> Selects all list items that are direct children of an unordered list</li>
+          <li><strong>Adjacent Sibling Selector (h2 + p):</strong> Selects paragraphs that directly follow an h2 heading</li>
+          <li><strong>General Sibling Selector (h2 ~ p):</strong> Selects all paragraphs that follow an h2 heading</li>
+          <li><strong>Attribute Selectors:</strong>
+            <ul>
+              <li><code>[type]</code>: Selects elements with a type attribute</li>
+              <li><code>[type="text"]</code>: Selects elements with type="text"</li>
+              <li><code>[href^="https"]</code>: Selects links that start with "https"</li>
+              <li><code>[href$=".pdf"]</code>: Selects links that end with ".pdf"</li>
+              <li><code>[title*="example"]</code>: Selects elements with "example" in their title attribute</li>
+            </ul>
+          </li>
+          <li><strong>Pseudo-classes:</strong>
+            <ul>
+              <li><code>a:hover</code>: Styles links when hovered over</li>
+              <li><code>li:first-child</code>: Styles the first list item in a list</li>
+              <li><code>li:nth-child(odd)</code>: Styles odd-numbered list items</li>
+            </ul>
+          </li>
+          <li><strong>Pseudo-elements:</strong>
+            <ul>
+              <li><code>p::first-letter</code>: Styles the first letter of each paragraph</li>
+              <li><code>p::before</code>: Adds content before each paragraph</li>
+            </ul>
+          </li>
+        </ul>
+      `;
+      lesson.practiceInstructions = `
+        <p>Create CSS rules using advanced selectors and combinators to style a blog page:</p>
+        <ol>
+          <li>Style all links inside the navigation menu differently from other links</li>
+          <li>Make all list items that are direct children of an unordered list have a specific bullet style</li>
+          <li>Style paragraphs that directly follow headings differently from other paragraphs</li>
+          <li>Select and style all input elements with type="text"</li>
+          <li>Style links that point to external sites (hint: use attribute selector with "http")</li>
+          <li>Add a hover effect to all buttons</li>
+          <li>Style the first item in each list differently</li>
+          <li>Use a pseudo-element to add special styling to the first letter of each paragraph</li>
+          <li>Use a pseudo-element to add content before or after certain elements</li>
+        </ol>
+        <p>Assume the HTML has navigation, headings, paragraphs, lists, forms with inputs, and links.</p>
+      `;
+      lesson.initialCode = `/* Write your CSS selectors and rules here */`;
+      lesson.solution = `/* Navigation links */
+nav a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Regular links (not in navigation) */
+a:not(nav a) {
+  color: #cc6600;
+  text-decoration: underline;
+}
+
+/* Direct children of unordered lists */
+ul > li {
+  list-style-type: square;
+  margin-bottom: 8px;
+}
+
+/* Paragraphs that directly follow headings */
+h1 + p, h2 + p, h3 + p {
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+/* Text inputs */
+input[type="text"] {
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+/* External links */
+a[href^="http"] {
+  color: #009900;
+  padding-right: 20px;
+  background: url('external-link-icon.png') no-repeat right center;
+  background-size: 16px;
+}
+
+/* Button hover effect */
+button:hover, input[type="submit"]:hover {
+  background-color: #0066cc;
+  color: white;
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* First item in each list */
+li:first-child {
+  font-weight: bold;
+  color: #cc0000;
+}
+
+/* First letter of each paragraph */
+p::first-letter {
+  font-size: 150%;
+  color: #cc0000;
+  font-weight: bold;
+}
+
+/* Add content before headings */
+h2::before {
+  content: "✦ ";
+  color: #0066cc;
+}
+
+/* Alternating list items */
+li:nth-child(odd) {
+  background-color: #f5f5f5;
+}`;
+      lesson.solutionExplanation = `
+        <p>This solution demonstrates:</p>
+        <ul>
+          <li><strong>Descendant Selector (nav a):</strong> Styles links within the navigation differently</li>
+          <li><strong>Negation Pseudo-class (:not):</strong> Styles links that are not in the navigation</li>
+          <li><strong>Child Selector (ul > li):</strong> Applies square bullets to direct children of unordered lists</li>
+          <li><strong>Adjacent Sibling Selector (h1 + p, h2 + p, h3 + p):</strong> Makes paragraphs following headings italic and slightly larger</li>
+          <li><strong>Attribute Selector (input[type="text"]):</strong> Styles text input fields</li>
+          <li><strong>Attribute Starts With Selector (a[href^="http"]):</strong> Styles external links and adds a background image</li>
+          <li><strong>Hover Pseudo-class (button:hover):</strong> Creates an interactive effect when buttons are hovered over</li>
+          <li><strong>First-child Pseudo-class (li:first-child):</strong> Highlights the first item in each list</li>
+          <li><strong>First-letter Pseudo-element (p::first-letter):</strong> Makes the first letter of each paragraph larger and bold</li>
+          <li><strong>Before Pseudo-element (h2::before):</strong> Adds a decorative symbol before each h2 heading</li>
+          <li><strong>Nth-child Pseudo-class (li:nth-child(odd)):</strong> Creates a zebra-striping effect for list items</li>
+        </ul>
+        <p>This solution covers a wide range of advanced selectors and combinators, demonstrating how they can be used to create sophisticated styling without modifying the HTML structure.</p>
+      `;
+      break;
+
     // For the remaining lessons, we'll use a template approach
     default:
       // Generate content based on the topic
       const topicTitle = topic.title;
       const topicLevel = topic.level;
-      
+
       // Create a template explanation based on the topic
       lesson.explanation = `
         <h2>${topicTitle} in CSS</h2>
         <p>This lesson covers ${topicTitle.toLowerCase()} in CSS, which is an important concept for ${topicLevel} web designers and developers.</p>
-        
+
         <h3>Key Concepts</h3>
         <ul>
           <li>Understanding the basics of ${topicTitle.toLowerCase()} in CSS</li>
           <li>Learning how to implement ${topicTitle.toLowerCase()} for web styling</li>
           <li>Practicing with real-world examples</li>
         </ul>
-        
+
         <h3>Why This Matters</h3>
         <p>${topicTitle} is essential for creating visually appealing and responsive websites. It helps you control the presentation and layout of web pages.</p>
       `;
-      
+
       // Create a template example based on the topic
       const className = topicTitle.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
       lesson.example = `/* CSS for ${topicTitle} */
@@ -323,12 +556,12 @@ p::first-letter {
   .${className}-container {
     padding: 15px;
   }
-  
+
   .${className}-title {
     font-size: 20px;
   }
 }`;
-      
+
       // Create a template example explanation
       lesson.exampleExplanation = `
         <p>This example demonstrates the basic principles of ${topicTitle.toLowerCase()} in CSS:</p>
@@ -339,7 +572,7 @@ p::first-letter {
           <li>You can modify this example to explore different aspects of ${topicTitle.toLowerCase()}</li>
         </ul>
       `;
-      
+
       // Create template practice instructions
       lesson.practiceInstructions = `
         <p>Now it's your turn to practice ${topicTitle.toLowerCase()} in CSS:</p>
@@ -350,13 +583,13 @@ p::first-letter {
           <li>Try to improve the visual design and user experience</li>
         </ol>
       `;
-      
+
       // Create template initial code
       lesson.initialCode = `/* Your ${topicTitle.toLowerCase()} practice code goes here */
 /* Delete this comment and start coding! */
 
 `;
-      
+
       // Create template solution
       lesson.solution = `/* Solution for ${topicTitle} practice */
 .${className}-solution {
@@ -397,12 +630,12 @@ p::first-letter {
   .${className}-solution {
     padding: 10px;
   }
-  
+
   .${className}-solution h2 {
     font-size: 1.2rem;
   }
 }`;
-      
+
       // Create template solution explanation
       lesson.solutionExplanation = `
         <p>This solution demonstrates a basic implementation of ${topicTitle.toLowerCase()} in CSS:</p>
@@ -417,7 +650,7 @@ p::first-letter {
       `;
       break;
   }
-  
+
   return lesson;
 });
 
