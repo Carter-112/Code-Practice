@@ -63,7 +63,7 @@ export const getLessonData = (language, lessonId) => {
   }
   
   // Get specific lesson
-  const lesson = lessons[lessonId - 1];
+  const lesson = lessons.find(l => l.id === lessonId);
   
   if (!lesson) {
     throw new Error(`Lesson ${lessonId} not found for ${language}`);
@@ -90,9 +90,8 @@ export const getAllLessonsForLanguage = (language) => {
     throw new Error(`Invalid language: ${language}`);
   }
   
-  return lessons.map((lesson, index) => ({
+  return lessons.map(lesson => ({
     ...lesson,
-    id: index + 1,
     languageName: languageInfo[language].name,
     languageIcon: languageInfo[language].icon,
     languageColor: languageInfo[language].color
